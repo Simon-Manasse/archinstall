@@ -10,6 +10,8 @@ systemctl enable fstrim.timer
 sed -i 's/^#\[multilib\]/\[multilib\]/; s/^#Include = \/etc\/pacman.d\/mirrorlist/Include = \/etc\/pacman.d\/mirrorlist/' /etc/pacman.conf
 sudo pacman -Sy
 passwd
-useradd -m -g users -G wheel.storage,power -s /bin/bash simon
+useradd -m -g users -G wheel,storage,power -s /bin/bash simon
 passwd simon
 EDITOR=nano visudo
+mount -t efivarfs efivarfs /sys/firmware/efi/efivars
+bootctl install
