@@ -30,7 +30,7 @@ title Arch
 linux /vmlinuz-linux
 initrd /initramfs-linux.img
 EOF
-echo "options root=PARTUUID=$(blkid -s PARTUUID -o value /dev/vda3) rw" >> /boot/loader/entries/arch.conf
+echo "options root=PARTUUID=$(blkid -s PARTUUID -o value /dev/vda3) rw nvidia-drm.modeset=1" >> /boot/loader/entries/arch.conf
 
 # network setup
 sudo pacman -S dhcpcd --noconfirm
@@ -39,4 +39,21 @@ sudo pacman -S networkmanager --noconfirm
 sudo systemctl enable NetworkManager.service
 
 # GPU
-sudo pacman -Sy linux-headers nvidia-dkms libglvnd nvidia-utils opencl-nvidia lib32-libglvnd lib32-utils lib32-opencl-nvidia nvidia-settings --noconfirm
+sudo pacman -Sy linux-headers nvidia-dkms libglvnd nvidia-utils opencl-nvidia lib32-libglvnd lib32-nvidia-utils lib32-opencl-nvidia nvidia-settings --noconfirm
+sed -i 's/^MODULES=\(\)/MODULES=(nvidia nvidia_modeset nvidia_urm nvidia_drm)/' /etc/mkinitcpio.conf
+sudo mkdir /etc/pacman.d/hooks
+
+cat << 'EOF' > /etc/pacman.d/hooks/nvidia.hook
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Operation=Remove
+Type=Package
+Target=nvidia
+
+[Action]
+Depends=mkinitcpio
+When=PostTransaction
+Exec=/usr/bin/mkinitcpio -P
+EOF
+exit
