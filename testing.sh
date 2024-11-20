@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # create partitions
-sgdisk -n 1:0:+1G -t 1:ef00 -c 1:"boot" -n 2:0:+2G -t 2:8200 -c 2:"swap" -n 3:0:+5G -t 3:8300 -c 3:"root" -n 4:0:0 -t 4:8300 -c 4:"home" /dev/vda
+sgdisk -n 1:0:+1G -t 1:ef00 -c 1:"boot" -n 2:0:+2G -t 2:8200 -c 2:"swap" -n 3:0:+40G -t 3:8300 -c 3:"root" -n 4:0:0 -t 4:8300 -c 4:"home" /dev/vda
 
 # formating partitions
 mkfs.fat -F32 /dev/vda1
@@ -31,3 +31,4 @@ hwclock --systohc --utc
 echo simon > /etc/hostname
 systemctl enable fstrim.timer
 sed -i 's/^#\[multilib\]/\[multilib\]/; s/^#Include = \/etc\/pacman.d\/mirrorlist/Include = \/etc\/pacman.d\/mirrorlist/' /etc/pacman.conf
+

@@ -15,10 +15,13 @@ mount /dev/nvmen1p3 /mnt
 mkdir /mnt/boot /mnt/home
 mount /dev/nvmen1p1 /mnt/boot
 mount /dev/nvmen1p4 /mnt/home
+
+# updating mirrorlist
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 sudo pacman -Sy  pacman-contrib --noconfirm
 rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
+
+# entering mount
 pacstrap -K /mnt base linux linux-firmware base-devel --noconfirm
 genfstab -U -p /mnt >> /mnt/etc/fstab
-cp archinstall/archroot-install.sh /mnt
 arch-chroot /mnt
