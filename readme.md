@@ -8,7 +8,16 @@ chmod +x archinstall/installArch.sh
 ```
 
 
-After getting into 
+After getting into the mount:
+
+```
+sudo pacman -Sy git
+cd home
+git clone https://github.com/Simon-Manasse/archinstall
+chmod +x archinstall/archroot-install.sh
+./archinstall/archroot-install
+```
+
 Add password when asked
 
 in visudo

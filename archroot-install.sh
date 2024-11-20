@@ -14,7 +14,7 @@ hwclock --systohc --utc
 # 32bit support
 echo simon > /etc/hostname
 systemctl enable fstrim.timer
-sed -i -e 's/^#\[\(multilib\)\]/\[\1\]/' -e '/\[multilib\]/,/^$/s/^#Include = \/etc\/pacman.d\/mirrorlist/Include = \/etc\/pacman.d\/mirrorlist/' /etc/pacman.config
+sed -i -e 's/^#\[\(multilib\)\]/\[\1\]/' -e '/\[multilib\]/,/^$/s/^#Include = \/etc\/pacman.d\/mirrorlist/Include = \/etc\/pacman.d\/mirrorlist/' /etc/pacman.conf
 sudo pacman -Sy
 # creating users
 passwd
@@ -39,5 +39,4 @@ sudo pacman -S networkmanager --noconfirm
 sudo systemctl enable NetworkManager.service
 
 # GPU
-sudo pacman -S linux-headers
-sudo pacman -S nvidia-dkms libglvnd nvidia-utils opencl-nvidia lib32-libglvnd lib32-utils lib32-opencl-nvidia nvidia-settings --noconfirm
+sudo pacman -Sy linux-headers nvidia-dkms libglvnd nvidia-utils opencl-nvidia lib32-libglvnd lib32-utils lib32-opencl-nvidia nvidia-settings --noconfirm
