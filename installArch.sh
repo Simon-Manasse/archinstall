@@ -20,5 +20,5 @@ sudo pacman -Sy  pacman-contrib --noconfirm
 rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
 pacstrap -K /mnt base linux linux-firmware base-devel --noconfirm
 genfstab -U -p /mnt >> /mnt/etc/fstab
-cp archinstall/archroot-install.sh /mnt/root
+cp archinstall/archroot-install.sh /mnt
 arch-chroot /mnt
