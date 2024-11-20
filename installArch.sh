@@ -1,4 +1,4 @@
-#!bin/bash
+#!bin/zsh
 
 # create partitions
 sgdisk -n 1:0:+1G -t 1:ef00 -c 1:"boot" -n 2:0:+8G -t 2:8200 -c 2:"swap" -n 3:0:+70G -t 3:8300 -c 3:"root" -n 4:0:0 -t 4:8300 -c 4:"home" /dev/nvme0n1
