@@ -6,6 +6,7 @@ sed -i '/#hu_Hu.UTF-8/s/^#//' /etc/locale.gen
 locale-gen
 echo LANG=hu_HU.UTF-8 > /etc/locale.conf
 export LANG=hu_HU.UTF-8
+sudo localectl set-x11-keymap hu
 
 # updating timezones
 ln -s /usr/share/zoneinfo/Europe/Amsterdam > /etc/localtime
@@ -40,7 +41,7 @@ sudo systemctl enable NetworkManager.service
 
 # GPU
 sudo pacman -Sy linux-headers nvidia-dkms libglvnd nvidia-utils opencl-nvidia lib32-libglvnd lib32-nvidia-utils lib32-opencl-nvidia nvidia-settings --noconfirm
-sed -i 's/^MODULES=\(\)/MODULES=(nvidia nvidia_modeset nvidia_urm nvidia_drm)/' /etc/mkinitcpio.conf
+sed -i 's/^MODULES=()/MODULES=(nvidia nvidia_modeset nvidia_urm nvidia_drm)/' /etc/mkinitcpio.conf
 sudo mkdir /etc/pacman.d/hooks
 
 cat << 'EOF' > /etc/pacman.d/hooks/nvidia.hook
@@ -56,4 +57,3 @@ Depends=mkinitcpio
 When=PostTransaction
 Exec=/usr/bin/mkinitcpio -P
 EOF
-exit
