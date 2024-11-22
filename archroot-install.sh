@@ -6,7 +6,6 @@ sed -i '/#hu_Hu.UTF-8/s/^#//' /etc/locale.gen
 locale-gen
 echo LANG=hu_HU.UTF-8 > /etc/locale.conf
 export LANG=hu_HU.UTF-8
-sudo localectl set-x11-keymap hu
 
 # updating timezones
 ln -s /usr/share/zoneinfo/Europe/Amsterdam > /etc/localtime
