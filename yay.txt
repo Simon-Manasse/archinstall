@@ -30,6 +30,7 @@ discover
 dnslookup
 dnsmasq
 docker
+docker-desktop
 dolphin
 drkonqi
 dunst
@@ -188,6 +189,7 @@ quamachi
 remmina-git
 rofi-wayland
 rpcsvc-proto
+rustdesk
 sddm
 sddm-kcm
 simplescreenrecorder
