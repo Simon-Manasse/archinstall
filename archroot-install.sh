@@ -33,8 +33,8 @@ EOF
 echo "options root=PARTUUID=$(blkid -s PARTUUID -o value /dev/vda3) rw nvidia-drm.modeset=1" >> /boot/loader/entries/arch.conf
 
 # network setup
-sudo pacman -S dhcpcd --noconfirm
-sudo systemctl enable dhcpcd@enp1s0.service
+# sudo pacman -S dhcpcd --noconfirm
+# sudo systemctl enable dhcpcd@enp1s0.service
 sudo pacman -S networkmanager --noconfirm
 sudo systemctl enable NetworkManager.service
 
