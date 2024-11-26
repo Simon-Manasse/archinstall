@@ -22,37 +22,17 @@ if ! command -v yay &> /dev/null; then
 else
     echo "yay is already installed."
 fi
-sudo pacman -S neofetch
-#!/bin/bash
-
-cat << 'EOF' > $PWD/secondPart.sh
-#!/bin/bash
-
-# Commands to be run with sudo
-sudo_commands() {
-    sudo yay -Syu --noconfirm && yay -S base-devel cmake visual-studio-code-bin obsidian steam npm optimus-manager optimus-manager-qt python-pandas python-matplotlib brave-nightly-bin teams-for-linux python-pyarrow python-ipykernel python-seaborn python-sklearn-pandas python-virtualenv --noconfirm
-}
-
-# Run sudo commands
-sudo_commands
-
-sudo sed -i -e 's/DisplayCommand=/#DisplayCommand=\/usr\/share\/sddm\/scripts\/Xsetup/' -e 's/DisplayStopCommand=/#DisplayStopCommand=\/usr\/share\/sddm\/scripts\/Xstop/' /etc/sddm.conf
+sudo pacman -S neofetch konsole base-devel cmake visual-studio-code-bin obsidian steam npm optimus-manager optimus-manager-qt brave-nightly-bin teams-for-linux --noconfirm
 sudo systemctl enable optimus-manager
-
-cat << 'EOFF' > $PWD/thirdPart.sh
-#!/bin/zsh
 git config --global credential.helper store
 git config --global --add --bool push.autoSetupRemote true
-
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 sudo git clone https://github.com/zsh-users/zsh-autosuggestions.git /home/simon/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/simon/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
 sed -i 's/plugins=(git)/plugins=(git zsh-autosuggestions zsh-syntax-highlighting)/' ~/.zshrc
 sudo rm -f /home/simon/.config/autostart/secondPart.desktop
 source ~/.zshrc
-
-
-
 code --install-extension christian-kohler.path-intellisense
 code --install-extension eamodio.gitlens
 code --install-extension james-yu.latex-workshop
@@ -94,8 +74,6 @@ cat << "CODE" > $HOME/.config/Code/User/settings.json
 }
 
 CODE
-
-# CONFIGURE THE KONSOLE
 
 git clone https://github.com/nareshv/kde-konsole-colorschemes.git
 cd kde-konsole-colorschemes
@@ -141,27 +119,5 @@ sed -i '/\[Favorite Profiles\]/,/^$/ s/^Favorites=.*/Favorites='$PROFILE_NAME'.p
 
 sed -i 's/Opacity=.*/Opacity=0.79/' ~/.local/share/konsole/bl1nk.colorscheme
 
-EOFF
-chmod +x $PWD/thirdPart.sh
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-
-EOF
-
-chmod +x $PWD/secondPart.sh
-
-mkdir -p /home/simon/.config/autostart
-cat << EOF > /home/simon/.config/autostart/secondPart.desktop
-[Desktop Entry]
-Type=Application
-Terminal=false
-Exec=konsole -e $PWD/secondPart.sh
-Name=Run secondPart.sh
-Comment=Run secondPart.sh script after reboot
-EOF
-
-
-
-echo "Service created and enabled successfully"
 reboot
