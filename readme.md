@@ -4,6 +4,7 @@ loadkeys hu
 sudo pacman -Sy git
 git clone https://github.com/Simon-Manasse/archinstall
 chmod +x archinstall/installArch.sh
+mount -o remount,size=2G /run/archiso/cowspace
 ./archinstall/installArch.sh
 ```
 
