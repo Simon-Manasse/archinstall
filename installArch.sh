@@ -22,6 +22,6 @@ sudo pacman -Sy  pacman-contrib --noconfirm
 rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
 
 # entering mount
-pacstrap -K /mnt base linux linux-firmware base-devel nano --noconfirm
+pacstrap -K /mnt base linux linux-firmware base-devel nano git --noconfirm
 genfstab -U -p /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
