@@ -23,6 +23,7 @@ passwd simon
 EDITOR=nano visudo
 
 # boot
+mkdir /boot/loader /boot/loader/entries
 mount -t efivarfs efivarfs /sys/firmware/efi/efivars
 bootctl install
 cat <<'EOF' > /boot/loader/entries/arch.conf
