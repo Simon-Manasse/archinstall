@@ -120,4 +120,3 @@ sed -i '/\[Favorite Profiles\]/,/^$/ s/^Favorites=.*/Favorites='$PROFILE_NAME'.p
 sed -i 's/Opacity=.*/Opacity=0.79/' ~/.local/share/konsole/bl1nk.colorscheme
 
 
-reboot
