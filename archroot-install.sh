@@ -31,7 +31,7 @@ title Arch
 linux /vmlinuz-linux
 initrd /initramfs-linux.img
 EOF
-echo "options root=PARTUUID=$(blkid -s PARTUUID -o value /dev/vda3) rw nvidia-drm.modeset=1" >> /boot/loader/entries/arch.conf
+echo "options root=PARTUUID=$(blkid -s PARTUUID -o value /dev/nvme0n1p3) rw nvidia-drm.modeset=1" >> /boot/loader/entries/arch.conf
 
 # network setup
 # sudo pacman -S dhcpcd --noconfirm
