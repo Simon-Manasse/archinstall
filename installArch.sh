@@ -5,16 +5,16 @@ sgdisk -n 1:0:+1G -t 1:ef00 -c 1:"boot" -n 2:0:+8G -t 2:8200 -c 2:"swap" -n 3:0:
 
 # formating partitions
 mkfs.fat -F32 /dev/nvme0n1p1
-mkswap /dev/nvmen1p2
-swapon /dev/nvmen1p2
-mkfs.ext4 /dev/nvmen1p3
-mkfs.ext4 /dev/nvmen1p4
+mkswap /dev/nvme0n1p2
+swapon /dev/nvme0n1p2
+mkfs.ext4 /dev/nvme0n1p3
+mkfs.ext4 /dev/nvme0n1p4
 
 # mounting partitions
-mount /dev/nvmen1p3 /mnt
+mount /dev/nvme0n1p3 /mnt
 mkdir /mnt/boot /mnt/home
-mount /dev/nvmen1p1 /mnt/boot
-mount /dev/nvmen1p4 /mnt/home
+mount /dev/nvme0n1p1 /mnt/boot
+mount /dev/nvme0n1p4 /mnt/home
 
 # updating mirrorlist
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
