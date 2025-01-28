@@ -31,41 +31,14 @@ sudo git clone https://github.com/zsh-users/zsh-autosuggestions.git /home/simon/
 sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/simon/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
 sed -i 's/plugins=(git)/plugins=(git zsh-autosuggestions zsh-syntax-highlighting)/' ~/.zshrc
-sudo rm -f /home/simon/.config/autostart/secondPart.desktop
 source ~/.zshrc
 code --install-extension christian-kohler.path-intellisense
 code --install-extension eamodio.gitlens
-code --install-extension james-yu.latex-workshop
-code --install-extension mads-hartmann.bash-ide-vscode
-code --install-extension mathematic.vscode-latex
 code --install-extension mechatroner.rainbow-csv
 code --install-extension mhutchie.git-graph
-code --install-extension ms-azuretools.azure-dev
-code --install-extension ms-azuretools.vscode-azureappservice
-code --install-extension ms-azuretools.vscode-azurecontainerapps
-code --install-extension ms-azuretools.vscode-azurefunctions
-code --install-extension ms-azuretools.vscode-azureresourcegroups
-code --install-extension ms-azuretools.vscode-azurestaticwebapps
-code --install-extension ms-azuretools.vscode-azurestorage
-code --install-extension ms-azuretools.vscode-azurevirtualmachines
-code --install-extension ms-azuretools.vscode-cosmosdb
-code --install-extension ms-python.debugpy
-code --install-extension ms-python.python
-code --install-extension ms-python.vscode-pylance
-code --install-extension ms-toolsai.jupyter
-code --install-extension ms-toolsai.jupyter-keymap
-code --install-extension ms-toolsai.jupyter-renderers
-code --install-extension ms-toolsai.vscode-jupyter-cell-tags
-code --install-extension ms-toolsai.vscode-jupyter-slideshow
-code --install-extension ms-vscode.azure-account
-code --install-extension ms-vscode.cpptools
-code --install-extension ms-vscode.vscode-node-azure-pack
 code --install-extension pkief.material-icon-theme
 code --install-extension robbowen.synthwave-vscode
 code --install-extension rocketseat.theme-omni
-code --install-extension rogalmic.bash-debug
-code --install-extension shakram02.bash-beautify
-code --install-extension torn4dom4n.latex-support
 
 cat << "CODE" > $HOME/.config/Code/User/settings.json
 {
