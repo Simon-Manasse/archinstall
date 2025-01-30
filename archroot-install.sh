@@ -2,7 +2,7 @@
 sudo pacman -S nano bash-completion --noconfirm
 
 # generating locales
-sed -i '/#hu_Hu.UTF-8/s/^#//' /etc/locale.gen
+sed -i '/#hu_HU.UTF-8 UTF-8/s/^#//' /etc/locale.gen
 locale-gen
 echo LANG=hu_HU.UTF-8 > /etc/locale.conf
 export LANG=hu_HU.UTF-8
