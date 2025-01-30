@@ -31,7 +31,6 @@ sudo git clone https://github.com/zsh-users/zsh-autosuggestions.git /home/simon/
 sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/simon/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
 sed -i 's/plugins=(git)/plugins=(git zsh-autosuggestions zsh-syntax-highlighting)/' ~/.zshrc
-source ~/.zshrc
 code --install-extension christian-kohler.path-intellisense
 code --install-extension eamodio.gitlens
 code --install-extension mechatroner.rainbow-csv
