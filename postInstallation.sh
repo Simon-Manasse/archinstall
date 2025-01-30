@@ -89,6 +89,8 @@ fi
 # Output the result
 echo "Profile '$PROFILE_NAME' created and set as default with color scheme '$COLOR_SCHEME'."
 
+touch ~/.config/konsolerc
+
 sed -i '/\[Favorite Profiles\]/,/^$/ s/^Favorites=.*/Favorites='$PROFILE_NAME'.profile/' ~/.config/konsolerc || echo -e "[Favorite Profiles]\nFavorites=$PROFILE_NAME.profile" >> ~/.config/konsolerc
 
 sed -i 's/Opacity=.*/Opacity=0.79/' ~/.local/share/konsole/bl1nk.colorscheme
