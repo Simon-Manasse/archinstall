@@ -22,6 +22,7 @@ if ! command -v yay &> /dev/null; then
 else
     echo "yay is already installed."
 fi
+reboot
 yay -S neofetch konsole base-devel cmake visual-studio-code-bin obsidian npm optimus-manager optimus-manager-qt brave-bin teams-for-linux zsh --noconfirm
 sudo systemctl enable optimus-manager
 git config --global credential.helper store
