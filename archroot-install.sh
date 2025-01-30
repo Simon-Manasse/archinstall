@@ -57,3 +57,5 @@ Depends=mkinitcpio
 When=PostTransaction
 Exec=/usr/bin/mkinitcpio -P
 EOF
+
+echo "you can run the finishinstall script"
