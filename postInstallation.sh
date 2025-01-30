@@ -47,10 +47,6 @@ cat << "CODE" > $HOME/.config/Code/User/settings.json
 
 CODE
 
-git clone https://github.com/nareshv/kde-konsole-colorschemes.git
-cd kde-konsole-colorschemes
-cp *.colorscheme ~/.local/share/konsole
-
 # Set variables
 PROFILE_NAME="test"
 COLOR_SCHEME="bl1nk"
@@ -58,10 +54,16 @@ PROFILE_DIR="$HOME/.local/share/konsole"
 PROFILE_FILE="$PROFILE_DIR/$PROFILE_NAME.profile"
 KONSOLE_CONFIG_FILE="$HOME/.config/konsolerc"
 
+
 # Check if Konsole profile directory exists
 if [ ! -d "$PROFILE_DIR" ]; then
     mkdir -p "$PROFILE_DIR"
 fi
+
+git clone https://github.com/nareshv/kde-konsole-colorschemes.git
+cd kde-konsole-colorschemes
+cp *.colorscheme ~/.local/share/konsole
+
 
 # Create a new profile
 cat <<EOL > "$PROFILE_FILE"
