@@ -2,10 +2,10 @@
 sudo pacman -S nano bash-completion --noconfirm
 
 # generating locales
-sed -i '/#hu_HU.UTF-8 UTF-8/s/^#//' /etc/locale.gen
+sed -i '/#en_US.UTF-8 UTF-8/s/^#//' /etc/locale.gen
 locale-gen
-echo LANG=hu_HU.UTF-8 > /etc/locale.conf
-export LANG=hu_HU.UTF-8
+echo LANG=en_US.UTF-8 > /etc/locale.conf
+export LANG=en_US.UTF-8
 
 # updating timezones
 ln -s /usr/share/zoneinfo/Europe/Amsterdam > /etc/localtime
